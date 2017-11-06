@@ -96,6 +96,9 @@ public class FruitMachineTest {
 
         Mockito.when(spyMachine1.spin()).thenReturn(mockitoResult1);
         assertEquals(expected, spyMachine1.spin());
+        assertEquals(3, spyMachine1.getResultReel().size());
+        assertEquals(expected, spyMachine1.getResultReel());
+//        assertEquals(300, spyMachine1.evaluateWinnings());
     }
 
     @Test

@@ -1,29 +1,26 @@
 package com.example.chad.fruitmachine;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Random;
 
-import static android.R.attr.value;
 import static android.media.CamcorderProfile.get;
 
 /**
  * Created by chad on 03/11/2017.
  */
 
-public class FruitMachine {
+public class FruitMachine implements Playable {
     private ArrayList<Reel> reels;
     private ArrayList<Symbol> resultReel;
     private int funds;
-    private int costPerSpin;
+    private int costPerPlay;
 
     public FruitMachine(int numReels, int funds) {
         this.resultReel = new ArrayList<>();
         this.reels = new ArrayList<>();
         generateReels(numReels);
         this.funds = funds;
-        this.costPerSpin = 1;
+        this.costPerPlay = 1;
     }
 
     public void generateReels(int numReels) {
@@ -59,6 +56,10 @@ public class FruitMachine {
         return funds;
     }
 
+    public int getCostPerPlay() {
+        return this.costPerPlay;
+    }
+
 //    ///////////Setters
 //    Tested
     public void setResultReel(ArrayList<Symbol> results) {
@@ -85,6 +86,8 @@ public class FruitMachine {
 
             if (getResultSymbol(i) != getResultSymbol(i+1)) {
                 winnings *= 0;
+            } else {
+                winnings *= 1;
             }
         }
         winnings *= getResultSymbol(0).getValue() * getNumReels();
@@ -101,7 +104,8 @@ public class FruitMachine {
 
     //    Tested
     public ArrayList<Symbol> spin() {
-        this.funds += this.costPerSpin;
+        this.funds += this.costPerPlay;
+        resultReel.clear();
         for (Reel reel : this.reels) {
             resultReel.add(reel.getSymbols().get(randomGenerator()));
         }

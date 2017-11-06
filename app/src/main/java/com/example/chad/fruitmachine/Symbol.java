@@ -11,9 +11,9 @@ public class Symbol {
         this.fruit = fruit;
     }
 
-    public Symbol(Enum other) {
-
-    }
+//    public Symbol(Enum other) {
+//        this.fruit = other;
+//    }
 
     public Fruit getFruit() {
         return this.fruit;

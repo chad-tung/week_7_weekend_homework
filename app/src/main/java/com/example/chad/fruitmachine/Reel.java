@@ -17,9 +17,12 @@ public class Reel {
         generateSymbols();
     }
 
-    public Reel(Enum other) {
-
-    }
+//    public Reel(Enum other) {
+//        symbols = new ArrayList<>();
+//        for (Enum other: Enum.values()) {
+//            symbols.add(new Symbol(other));
+//        }
+//    }
 
     public void generateSymbols() {
         for (Fruit fruit: Fruit.values()) {
